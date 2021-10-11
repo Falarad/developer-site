@@ -1,20 +1,18 @@
-FROM node:14.18.0-alpine
+FROM node:14-alpine
+# Uncomment the line above if you want to use a Dockerfile instead of templateId
 
-LABEL authors="Alejandro Such <alejandro.such@gmail.com> , Mihai Bob <mihai.m.bob@gmail.com>, Dinei A. Rockenbach <dineiar@gmail.com>"
 
-RUN apk update \
-  && apk add --update alpine-sdk python3 \
-  && yarn global add @angular/cli@10.2.3 \
-  && ng config --global cli.packageManager yarn \
-  && apk del alpine-sdk python3 \
-  && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
-  && npm cache clean --force \
-  && yarn cache clean \
-  && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
+RUN apk update && apk upgrade && \
+    apk add --no-cache git
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-EXPOSE 4200
+COPY ./package.json /usr/src/app/
+RUN npm install --production && npm cache clean --force
+RUN npm install -g @angular/cli
+COPY ./ /usr/src/app
+ENV NODE_ENV production
+ENV PORT 80
+EXPOSE 80
 
-# Replaces default node entrypoint to allow/force "ng" command by default
-COPY docker-entrypoint.sh /usr/local/bin/
-
-CMD [ "ng", "serve" ]
+CMD [ "npm", "start" ]
