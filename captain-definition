@@ -12,6 +12,6 @@
     "RUN npm cache clean --force",
     "RUN yarn cache clean",
     "EXPOSE 4200",
-    "RUUN [ 'ng serve' ]"
+    "RUN [ 'ng serve' ]"
   ]
 }
