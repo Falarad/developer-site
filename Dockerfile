@@ -1,18 +1,5 @@
-FROM node:14-alpine
-# Uncomment the line above if you want to use a Dockerfile instead of templateId
-
-
-RUN apk update && apk upgrade && \
-    apk add --no-cache git
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-
-COPY ./package.json /usr/src/app/
-RUN npm install --production && npm cache clean --force
-RUN npm install -g @angular/cli
-COPY ./ /usr/src/app
-ENV NODE_ENV production
-ENV PORT 80
-EXPOSE 80
-
-CMD [ "npm", "start" ]
+FROM node:lts
+RUN mkdir /home/node/app && chown node:node /home/node/app
+RUN mkdir /home/node/app/node_modules && chown node:node /home/node/app/node_modules
+WORKDIR  /home/node/app
+USER node
