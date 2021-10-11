@@ -1,18 +1,4 @@
 {
  "schemaVersion": 2,
-  "dockerfileLines": [
-    "FROM node:14.18.0-alpine",
-    "LABEL authors='Miguel Pimentel'",
-    "RUN apk update",
-    "RUN apk add --update alpine-sdk python3",
-    "RUN yarn global add @angular/cli@10.2.3",
-    "RUN ng config --global cli.packageManager yarn",
-    "RUN apk del alpine-sdk python3",
-    "RUN rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm",
-    "RUN npm cache clean --force",
-    "RUN yarn cache clean",
-    "EXPOSE 4200",
-    "COPY docker-entrypoint.sh /usr/local/bin/",
-    "RUN [ 'ng serve' ]"
-  ]
+  "dockerfilePath": "./Dockerfile"
 }
