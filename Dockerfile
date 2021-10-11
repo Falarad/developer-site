@@ -17,4 +17,4 @@ EXPOSE 4200
 # Replaces default node entrypoint to allow/force "ng" command by default
 COPY docker-entrypoint.sh /usr/local/bin/
 
-CMD [ "ng" ]
+CMD [ "ng", "serve" ]
