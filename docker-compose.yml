@@ -3,7 +3,7 @@ services:
     build: .
     command: echo 'ready'
     volumes:
-      - ./:/home/node/app
-      - node_modules:/home/node/app/node_modules
+      - ./:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
 volumes:
   node_modules:
