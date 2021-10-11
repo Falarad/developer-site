@@ -2,9 +2,7 @@
  "schemaVersion": 2,
   "dockerfileLines": [
     "FROM node:14.18.0-alpine",
-
     "LABEL authors='Miguel Pimentel'",
-
     "RUN apk update \",
     "&& apk add --update alpine-sdk python3 \",
     "&& yarn global add @angular/cli@10.2.3 \",
@@ -13,11 +11,8 @@
     "&& rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \",
     "&& npm cache clean --force \",
     "&& yarn cache clean \",
-
     "EXPOSE 4200",
-
     "COPY docker-entrypoint.sh /usr/local/bin/",
-
-    "CMD [ "ng serve" ]"
+    "CMD [ 'ng serve' ]"
   ]
 }
