@@ -1,8 +1,13 @@
-FROM node:lts
-RUN mkdir /home/node/app && chown node:node /home/node/app
-RUN mkdir /home/node/app/node_modules && chown node:node /home/node/app/node_modules
-WORKDIR  /home/node/app
-USER node
-COPY --chown=node:node package.json package-lock.json ./
-RUN npm ci --quiet
-COPY --chown=node:node . .
+### STAGE 1: Build ###
+FROM node:slim AS build
+WORKDIR /usr/src/app
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+### STAGE 2: Run ###
+FROM nginx:1.13.9-alpine
+
+COPY --from=build /usr/src/app/dist/hello-gaus /usr/share/nginx/html
+
+EXPOSE 80
