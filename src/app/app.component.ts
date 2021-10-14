@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'developer-site';
+  portfolio = [{link:"#", slug:"Test", desc:"Test"}, {link:"#", slug:"Test", desc:"Test"}];
+  blog = [{link:"#", slug:"Test", desc:"Test"}, {link:"#", slug:"Test", desc:"Test"}];
 }
