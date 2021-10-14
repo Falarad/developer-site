@@ -1,5 +1,5 @@
 <div class="content" role="main">
-  <mat-grid-list cols="6" rowHeight="1:1">
+  <mat-grid-list cols="{{columns}}" rowHeight="1:1">
     <mat-grid-tile>
       <a href="#about" class="card">
         <mat-card>
@@ -16,7 +16,7 @@
         </mat-card>
       </a>
     </mat-grid-tile>
-    <mat-grid-tile *ngFor="let post of portfolio">
+    <mat-grid-tile *ngFor="let post of portfolio | slice:0:entries;">
       <a href="{{post.link}}" class="card">
         <mat-card class="card">
           <mat-card-title>{{post.slug}}</mat-card-title>
@@ -24,7 +24,7 @@
         </mat-card>
       </a>
     </mat-grid-tile>
-    <mat-grid-tile *ngFor="let post of blog"  >
+    <mat-grid-tile *ngFor="let post of blog | slice:0:entries;">
       <a href="{{post.link}}" class="card">
         <mat-card class="card">
           <mat-card-title>{{post.slug}}</mat-card-title>
