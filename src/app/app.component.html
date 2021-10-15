@@ -1,0 +1,47 @@
+<div class="content" role="main">
+  <mat-grid-list cols="{{columns}}" rowHeight="1:1">
+    <mat-grid-tile>
+      <a href="#about" class="card">
+        <mat-card>
+          <mat-card-title>About Me</mat-card-title>
+          <mat-card-content>aaaaa</mat-card-content>
+        </mat-card>
+      </a>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <a href="#contact" class="card">
+        <mat-card class="card">
+          <mat-card-title>Contact Me</mat-card-title>
+          <mat-card-content>aaaaa</mat-card-content>
+        </mat-card>
+      </a>
+    </mat-grid-tile>
+    <mat-grid-tile *ngFor="let post of portfolio | slice:0:entries;">
+      <a href="{{post.link}}" class="card">
+        <mat-card class="card">
+          <mat-card-title>{{post.slug}}</mat-card-title>
+          <mat-card-content>{{post.desc}}</mat-card-content>
+        </mat-card>
+      </a>
+    </mat-grid-tile>
+    <mat-grid-tile *ngFor="let post of blog | slice:0:entries;">
+      <a href="{{post.link}}" class="card">
+        <mat-card class="card">
+          <mat-card-title>{{post.slug}}</mat-card-title>
+          <mat-card-content>{{post.desc}}</mat-card-content>
+        </mat-card>
+      </a>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <app-about></app-about>
+  <app-contact></app-contact>
+</div>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<router-outlet></router-outlet>
