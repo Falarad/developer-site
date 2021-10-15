@@ -2,7 +2,6 @@ import { Component, OnDestroy } from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import { AuthenticationService } from "./authentication.service";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +17,6 @@ export class AppComponent {
   columns = "";
   entries = 0;
 
-
   // Create a map to display breakpoint names for demonstration purposes.
   displayNameMap = new Map([
     [Breakpoints.XSmall, '1'],
@@ -28,7 +26,7 @@ export class AppComponent {
     [Breakpoints.XLarge, '5'],
   ]);
 
-  constructor(breakpointObserver: BreakpointObserver, public auth: AuthenticationService) {
+  constructor(breakpointObserver: BreakpointObserver) {
     breakpointObserver.observe([
       Breakpoints.XSmall,
       Breakpoints.Small,

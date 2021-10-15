@@ -33,13 +33,6 @@
       </a>
     </mat-grid-tile>
   </mat-grid-list>
-  <ul class="nav navbar-nav navbar-right">
-    <li *ngIf="!auth.isLoggedIn()"><a routerLink="/login">Sign in</a></li>
-    <li *ngIf="auth.isLoggedIn()">
-      <a routerLink="/profile">{{ auth.getUserDetails()?.name }}</a>
-    </li>
-    <li *ngIf="auth.isLoggedIn()"><a (click)="auth.logout()">Logout</a></li>
-  </ul>
   <app-about></app-about>
   <app-contact></app-contact>
 </div>
